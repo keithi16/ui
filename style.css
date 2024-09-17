@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: coral;
+    position: relative;
+}
+
+.modal {
+    position: fixed;
+    bottom: 115px;
+    right: 45px;
+    z-index: 10;
+}
+
+.modal-button {
+    width: max-content;
+    padding: 12px 17px;
+    background-color: #0E5074;
+    border: 0;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    outline: 0;
+    position: relative;
+    z-index: 9;
+}
+
+.modal-button span {
+    max-width: 0px;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal-icon {
+    position: relative;
+}
+
+.icon-i {
+    opacity: 1;
+}
+
+.icon-x {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    opacity: 0;
+}
+
+.modal-button, 
+.modal-icon,
+.modal-button span,
+.icon-x,
+.icon-i {
+    transition: all 450ms ease;
+} 
+
+.modal-content {
+    width: 480px;
+    max-width: calc(-80px + 100vw);
+    padding: 56px 80px 64px;
+    background-color: white;
+    border: 1px solid rgb(223, 225, 226);
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    z-index: 8;
+    animation: 1s ease 0s 1 normal forwards running moveAndFadeIn;
+}
+
+@keyframes moveAndFadeIn {
+    0% {
+        right: 0px;
+        bottom: 0px;
+        opacity: 0;
+    }
+    100% {
+        right: 20px;
+        bottom: 20px;
+        opacity: 1;
+    }
+}
+
+
+/* Modal Open */
+
+.modal.open .modal-button {
+    background-color: black;
+}
+
+.modal.open .modal-content {
+    display: flex;
+}
+
+.modal.open .modal-button span {
+    margin-right: 15px;
+    max-width: 75px;
+    opacity: 1;
+}
+
+.modal.open .modal-icon {
+    transform: rotate(-180deg);
+}
+
+.modal.open .icon-i {
+    opacity: 0;
+}
+
+.modal.open .icon-x {
+    opacity: 1;
+}
+
+@media screen and (max-width: 992px) {
+    .modal {
+        right: 24px;
+    }
+
+    .modal-content {
+        padding: 56px 34px 64px;
+    } 
+}
